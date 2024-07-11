@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+    <!--Throne Core-->
+    <ThingDef ParentName="FurnitureWithQualityBase" Name="GoldenThrone">
+        <defName>GoldenThrone</defName>
+        <label>Golden Throne</label>
+        <description>Big chair make psyker soul go brrrt</description>
+        <thingClass>GoldenThrone.Buildings.MeditationThrone</thingClass>
+        <graphicData>
+            <texPath>Things/Building/Cogitator/GW_Cogitator</texPath>
+            <graphicClass>Graphic_Multi</graphicClass>
+            <drawSize>2.46875</drawSize>
+        </graphicData>
+        <category>BuildingsFurniture</category>
+        <researchPrerequisites>
+            <li>GW_Cogitator</li>
+        </researchPrerequisites>
+        <size>(2,2)</size>
+        <pathCost>15</pathCost>
+        <blockWind>true</blockWind>
+        <rotatable>true</rotatable>
+        <statBases>
+            <MaxHitPoints>800</MaxHitPoints>
+            <WorkToBuild>4000</WorkToBuild>
+            <Flammability>0</Flammability>
+            <Beauty>400</Beauty>
+            <Comfort>1.0</Comfort>
+        </statBases>
+        <costList>
+            <li>
+                <thingDef>Gold</thingDef>
+                <count>1000</count>
+            </li>
+            <li>
+                <thingDef>Auramite</thingDef>
+                <count>35</count>
+            </li>
+            <li>
+                <thingDef>GW_ComponentRelic</thingDef>
+                <count>5</count>
+            </li>
+        </costList>
+        <comps>
+            <!-- Replace this with similar behavior focused on psy sensitivity or psy rating -->
+            <li Class="CompProperties_AssignableToPawn">
+                <drawAssignmentOverlay>true</drawAssignmentOverlay>
+                <compClass>CompAssignableToPawn</compClass>
+                <noAssignablePawnsDesc>Requires an active psyker</noAssignablePawnsDesc>
+            </li>
+            <li Class="CompProperties_MeditationFocus">
+                <statDef>MeditationFocusStrength</statDef>
+                <focusTypes>
+                    <li>Dignified</li>
+                    <li>Morbid</li>
+                </focusTypes>
+                <offsets>
+                    <li Class="FocusStrengthOffset_RoomImpressiveness">
+                        <curve>
+                            <points>
+                                <li>(0, -0.05)</li>
+                                <li>(30, 0.00)</li>
+                                <li>(60, 0.04)</li>
+                                <li>(100, 0.08)</li>
+                                <li>(170, 0.10)</li>
+                            </points>
+                        </curve>
+                    </li>
+                </offsets>
+            </li>
+            <li>
+                <compClass>CompPowerTrader</compClass>
+                <basePowerConsumption>40</basePowerConsumption>
+            </li>
+            <li>
+                <compClass>CompGlower</compClass>
+                <glowRadius>14</glowRadius>
+                <overlightRadius>14</overlightRadius>
+                <glowColor>(0.8, 0.8, 0.8, 1)</glowColor>
+            </li>
+            <li Class="CompProperties_Flickable" />
+        </comps>
+        <terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+        <designationCategory>GrimworldCategory</designationCategory>
+        <constructEffect>ConstructMetal</constructEffect>
+        <constructionSkillPrerequisite>14</constructionSkillPrerequisite>
+    </ThingDef>
+
+    <!--Throne
+    Linkables-->
+
+</Defs>
