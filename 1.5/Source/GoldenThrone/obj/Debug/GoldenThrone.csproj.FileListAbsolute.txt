@@ -1,0 +1,6 @@
+D:\SteamLibrary\steamapps\common\RimWorld\Mods\Golden-Throne\1.5\Assemblies\GoldenThrone.dll
+D:\SteamLibrary\steamapps\common\RimWorld\Mods\Golden-Throne\1.5\Assemblies\GoldenThrone.pdb
+D:\SteamLibrary\steamapps\common\RimWorld\Mods\Golden-Throne\1.5\Source\GoldenThrone\obj\Debug\GoldenThrone.csproj.AssemblyReference.cache
+D:\SteamLibrary\steamapps\common\RimWorld\Mods\Golden-Throne\1.5\Source\GoldenThrone\obj\Debug\GoldenThrone.csproj.CoreCompileInputs.cache
+D:\SteamLibrary\steamapps\common\RimWorld\Mods\Golden-Throne\1.5\Source\GoldenThrone\obj\Debug\GoldenThrone.dll
+D:\SteamLibrary\steamapps\common\RimWorld\Mods\Golden-Throne\1.5\Source\GoldenThrone\obj\Debug\GoldenThrone.pdb

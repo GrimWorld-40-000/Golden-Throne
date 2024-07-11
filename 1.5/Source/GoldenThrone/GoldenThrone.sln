@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RimworldModding", "RimworldModding.csproj", "{9F385C34-E1F4-4600-A3DC-A82EB16F12DC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoldenThrone", "GoldenThrone.csproj", "{9F385C34-E1F4-4600-A3DC-A82EB16F12DC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

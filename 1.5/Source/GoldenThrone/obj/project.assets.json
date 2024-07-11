@@ -574,11 +574,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\SteamLibrary\\steamapps\\common\\RimWorld\\Mods\\Golden-Throne\\Source\\GoldenThrone\\RimworldModding.csproj",
+      "projectUniqueName": "D:\\SteamLibrary\\steamapps\\common\\RimWorld\\Mods\\Golden-Throne\\1.5\\Source\\GoldenThrone\\GoldenThrone.csproj",
       "projectName": "RimworldModding",
-      "projectPath": "D:\\SteamLibrary\\steamapps\\common\\RimWorld\\Mods\\Golden-Throne\\Source\\GoldenThrone\\RimworldModding.csproj",
+      "projectPath": "D:\\SteamLibrary\\steamapps\\common\\RimWorld\\Mods\\Golden-Throne\\1.5\\Source\\GoldenThrone\\GoldenThrone.csproj",
       "packagesPath": "C:\\Users\\Kennon\\.nuget\\packages\\",
-      "outputPath": "D:\\SteamLibrary\\steamapps\\common\\RimWorld\\Mods\\Golden-Throne\\Source\\GoldenThrone\\obj\\",
+      "outputPath": "D:\\SteamLibrary\\steamapps\\common\\RimWorld\\Mods\\Golden-Throne\\1.5\\Source\\GoldenThrone\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Kennon\\AppData\\Roaming\\NuGet\\NuGet.Config",

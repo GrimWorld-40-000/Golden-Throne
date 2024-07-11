@@ -1,18 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Defs>
-
     <!--Throne Core-->
-    <ThingDef ParentName="FurnitureWithQualityBase" Name="GoldenThrone">
-        <defName>GoldenThrone</defName>
+    <ThingDef ParentName="FurnitureWithQualityBase"><defName>GoldenThrone</defName>
         <label>Golden Throne</label>
         <description>Big chair make psyker soul go brrrt</description>
-        <thingClass>GoldenThrone.Buildings.MeditationThrone</thingClass>
+
+        <thingClass>GoldenThrone.Buildings.GoldenThrone</thingClass>
         <graphicData>
             <texPath>Things/Building/Cogitator/GW_Cogitator</texPath>
             <graphicClass>Graphic_Multi</graphicClass>
             <drawSize>2.46875</drawSize>
         </graphicData>
-        <category>BuildingsFurniture</category>
+        <category>Building</category>
         <researchPrerequisites>
             <li>GW_Cogitator</li>
         </researchPrerequisites>
@@ -42,10 +41,8 @@
             </li>
         </costList>
         <comps>
-            <!-- Replace this with similar behavior focused on psy sensitivity or psy rating -->
-            <li Class="CompProperties_AssignableToPawn">
+            <li Class="GoldenThrone.CompProperties_GoldenThrone">
                 <drawAssignmentOverlay>true</drawAssignmentOverlay>
-                <compClass>CompAssignableToPawn</compClass>
                 <noAssignablePawnsDesc>Requires an active psyker</noAssignablePawnsDesc>
             </li>
             <li Class="CompProperties_MeditationFocus">
@@ -68,17 +65,16 @@
                     </li>
                 </offsets>
             </li>
-            <li>
+            <li Class="CompProperties_Power">
                 <compClass>CompPowerTrader</compClass>
                 <basePowerConsumption>40</basePowerConsumption>
             </li>
-            <li>
-                <compClass>CompGlower</compClass>
+            <li Class="CompProperties_Glower">
                 <glowRadius>14</glowRadius>
                 <overlightRadius>14</overlightRadius>
                 <glowColor>(0.8, 0.8, 0.8, 1)</glowColor>
             </li>
-            <li Class="CompProperties_Flickable" />
+            <li Class="CompProperties_Flickable"/>
         </comps>
         <terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
         <designationCategory>GrimworldCategory</designationCategory>
@@ -86,7 +82,5 @@
         <constructionSkillPrerequisite>14</constructionSkillPrerequisite>
     </ThingDef>
 
-    <!--Throne
-    Linkables-->
-
+    <!--Throne Linkables-->
 </Defs>
