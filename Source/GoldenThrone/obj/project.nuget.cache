@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "UJhues47tFq8/mseRuopcUII6ndoFRZB92zRyak/3kXmN2fhf9ZiPL/cY6JBuhTxuT88WSnvP8VAUD9BHdwLBA==",
+  "success": true,
+  "projectFilePath": "D:\\SteamLibrary\\steamapps\\common\\RimWorld\\Mods\\Golden-Throne\\Source\\GoldenThrone\\RimworldModding.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Kennon\\.nuget\\packages\\krafs.rimworld.ref\\1.5.4146-beta\\krafs.rimworld.ref.1.5.4146-beta.nupkg.sha512"
+  ],
+  "logs": []
+}
