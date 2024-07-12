@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+<ResearchProjectDef>
+    <defName>GW_GoldenThrone</defName>
+    <label>golden throne</label>
+    <description>Construct the golden throne, the ancient Eldar artifact capable of connecting a psyker to their Webway.</description>
+    <baseCost>3000</baseCost>
+    <techLevel>Spacer</techLevel>
+    <researchViewX>1.50</researchViewX>
+    <researchViewY>4.25</researchViewY>
+    <generalRules>
+      <rulesStrings>
+        <li>subject->the Golden Throne</li>
+
+        <li>subject_story->studied old fragments of Eldari artifacts</li>
+        <li>subject_story->worked with the Imperium to excavate the original Golden Throne</li>
+        <li>subject_story->worked on the service worship force polishing and maintaining the Golden Throne</li>
+
+        <li>subject_gerund->researching the Golden Throne</li>
+      </rulesStrings>
+    </generalRules>
+  </ResearchProjectDef>
+</Defs>

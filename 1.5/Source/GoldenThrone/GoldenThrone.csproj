@@ -34,14 +34,26 @@
         <WarningLevel>4</WarningLevel>
     </PropertyGroup>
     <ItemGroup>
+        <Reference Include="0Harmony">
+          <HintPath>..\..\..\..\..\..\..\..\..\RimworldModding\References\0Harmony.dll</HintPath>
+          <Private>False</Private>
+        </Reference>
         <Reference Include="System"/>
         <Reference Include="System.Core"/>
         <Reference Include="System.Data"/>
         <Reference Include="System.Xml"/>
     </ItemGroup>
     <ItemGroup>
+        <Compile Include="ApplyHarmonyPatches.cs" />
+        <Compile Include="Attachments\CompPsydrainCoffin.cs" />
+        <Compile Include="Attachments\GoldenThroneAttachment.cs" />
+        <Compile Include="Attachments\JobDriver_EnterPsydrainCoffin.cs" />
         <Compile Include="Buildings\GoldenThrone.cs" />
+        <Compile Include="CompAffectedByGoldenThroneFacilities.cs" />
         <Compile Include="CompGoldenThrone.cs" />
+        <Compile Include="CompMeditationSpotGoldenThrone.cs" />
+        <Compile Include="FocusStrengthOffset_GoldenThronePower.cs" />
+        <Compile Include="GWGT_DefsOf.cs" />
         <Compile Include="Properties\AssemblyInfo.cs"/>
     </ItemGroup>
     <ItemGroup>

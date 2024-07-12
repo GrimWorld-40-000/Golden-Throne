@@ -1,51 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Defs>
     <!--Throne Core-->
-    <ThingDef ParentName="FurnitureWithQualityBase"><defName>GoldenThrone</defName>
+    <ThingDef ParentName="FurnitureBase">
+        <defName>GoldenThrone</defName>
         <label>Golden Throne</label>
         <description>Big chair make psyker soul go brrrt</description>
-
-        <thingClass>GoldenThrone.Buildings.GoldenThrone</thingClass>
+        <thingClass>GoldenThrone.Buildings.Building_GoldenThrone</thingClass>
         <graphicData>
             <texPath>Things/Building/Cogitator/GW_Cogitator</texPath>
             <graphicClass>Graphic_Multi</graphicClass>
-            <drawSize>2.46875</drawSize>
+            <drawSize>(14,10)</drawSize>
         </graphicData>
         <category>Building</category>
+        
+        <minifiedDef></minifiedDef>
+
+        <hasInteractionCell>true</hasInteractionCell>
+        <interactionCellOffset>(0,0,-5)</interactionCellOffset>
+        <socialPropernessMatters>true</socialPropernessMatters>
+        <pathCost>30</pathCost>
+        <!--<thingSetMakerTags>
+            <li>RewardStandardQualitySuper</li>
+        </thingSetMakerTags>-->
+        <building>
+            <isSittable>true</isSittable>
+        </building>
+        <ritualFocus>
+            <!--TODO: tweak this once it's full-sized-->
+            <spectateDistance>10</spectateDistance>
+            <allowedSpectateSides>Up</allowedSpectateSides>
+        </ritualFocus>
+        <placeWorkers>
+            <li>PlaceWorker_RitualFocus</li>
+        </placeWorkers>
+        <drawPlaceWorkersWhileSelected>True</drawPlaceWorkersWhileSelected>
+
+        
+        <thingCategories Inherit="False"/>
+
         <researchPrerequisites>
-            <li>GW_Cogitator</li>
+            <li>GW_GoldenThrone</li>
         </researchPrerequisites>
-        <size>(2,2)</size>
-        <pathCost>15</pathCost>
+        <size>(13,9)</size>
         <blockWind>true</blockWind>
         <rotatable>true</rotatable>
         <statBases>
+            <MeditationFocusStrength>0.15</MeditationFocusStrength>
             <MaxHitPoints>800</MaxHitPoints>
-            <WorkToBuild>4000</WorkToBuild>
+            <WorkToBuild>10000</WorkToBuild>
             <Flammability>0</Flammability>
             <Beauty>400</Beauty>
             <Comfort>1.0</Comfort>
+            <Mass>3000</Mass>
         </statBases>
         <costList>
-            <li>
-                <thingDef>Gold</thingDef>
-                <count>1000</count>
-            </li>
-            <li>
-                <thingDef>Auramite</thingDef>
-                <count>35</count>
-            </li>
-            <li>
-                <thingDef>GW_ComponentRelic</thingDef>
-                <count>5</count>
-            </li>
+            <Gold>1000</Gold>
+            <HP_Auramite>35</HP_Auramite>
+            <GW_ComponentRelic>5</GW_ComponentRelic>
         </costList>
         <comps>
+            <li Class="GoldenThrone.CompProperties_AffectedByGoldenThroneFacilities">
+              <linkableFacilities>
+                <li>GWGT_PsydrainCoffin</li>
+              </linkableFacilities>
+            </li>
             <li Class="GoldenThrone.CompProperties_GoldenThrone">
                 <drawAssignmentOverlay>true</drawAssignmentOverlay>
                 <noAssignablePawnsDesc>Requires an active psyker</noAssignablePawnsDesc>
+                <minimumSensitivityToUse>.5</minimumSensitivityToUse>
             </li>
-            <li Class="CompProperties_MeditationFocus">
+            <li Class="GoldenThrone.CompProperties_MeditationFocusGoldenThrone">
                 <statDef>MeditationFocusStrength</statDef>
                 <focusTypes>
                     <li>Dignified</li>
@@ -63,16 +87,19 @@
                             </points>
                         </curve>
                     </li>
+                    <li Class="GoldenThrone.FocusStrengthOffset_GoldenThronePower">
+                        <!--TODO-->
+                    </li>  
                 </offsets>
             </li>
             <li Class="CompProperties_Power">
                 <compClass>CompPowerTrader</compClass>
-                <basePowerConsumption>40</basePowerConsumption>
+                <basePowerConsumption>800</basePowerConsumption>
             </li>
             <li Class="CompProperties_Glower">
                 <glowRadius>14</glowRadius>
                 <overlightRadius>14</overlightRadius>
-                <glowColor>(0.8, 0.8, 0.8, 1)</glowColor>
+                <glowColor>(204, 204, 204, 255)</glowColor>
             </li>
             <li Class="CompProperties_Flickable"/>
         </comps>
@@ -83,4 +110,77 @@
     </ThingDef>
 
     <!--Throne Linkables-->
+    <ThingDef ParentName="FurnitureBase" Name="GoldenThroneLinkableBase" Abstract="True">
+        <drawerType>MapMeshAndRealTime</drawerType>
+        <placeWorkers>
+          <li>PlaceWorker_ShowFacilitiesConnections</li>
+        </placeWorkers>
+        <designationCategory>GrimworldCategory</designationCategory>
+        <constructEffect>ConstructMetal</constructEffect>
+        <building>
+          <destroySound>BuildingDestroyed_Metal_Small</destroySound>
+        </building>
+        <altitudeLayer>Building</altitudeLayer>
+        <passability>PassThroughOnly</passability>
+        <castEdgeShadows>true</castEdgeShadows>
+        <pathCost>42</pathCost>
+        <canOverlapZones>false</canOverlapZones>
+        <researchPrerequisites>
+            <li>GW_GoldenThrone</li>
+        </researchPrerequisites>
+        <thingCategories>
+          <li>BuildingsMisc</li>
+        </thingCategories>
+        <thingClass>Building</thingClass>
+    </ThingDef>
+
+    <ThingDef ParentName="GoldenThroneLinkableBase">
+        <defName>GWGT_PsydrainCoffin</defName>
+        <label>psydrain coffin</label>
+        <description>A grim tool in which a pawn's very soul is leeched from their body, killing them and empowering the user on the seat of the Golden Throne.\n\nCosts 2 capacity</description>
+        <graphicData>
+          <texPath>Things/Building/Misc/ToolCabinet</texPath>
+          <graphicClass>Graphic_Multi</graphicClass>
+          <drawSize>(2,1)</drawSize>
+          <damageData>
+            <cornerTL>Damage/Corner</cornerTL>
+            <cornerTR>Damage/Corner</cornerTR>
+            <cornerBL>Damage/Corner</cornerBL>
+            <cornerBR>Damage/Corner</cornerBR>
+          </damageData>
+        </graphicData>
+        <statBases>
+          <MaxHitPoints>100</MaxHitPoints>
+          <WorkToBuild>1800</WorkToBuild>
+          <Mass>20</Mass>
+          <Flammability>0.5</Flammability>
+        </statBases>
+        <staticSunShadowHeight>0.35</staticSunShadowHeight>
+        <fillPercent>0.5</fillPercent>
+        <size>(2,1)</size>
+        <costList>
+          <Steel>120</Steel>
+          <HP_Auramite>2</HP_Auramite>
+          <ComponentSpacer>1</ComponentSpacer>
+        </costList>
+        <constructionSkillPrerequisite>8</constructionSkillPrerequisite>
+        
+        <comps>
+            <li Class="GoldenThrone.Attachments.CompProperties_GoldenThroneAttachment">
+                <capacityCost>2</capacityCost>
+                <maxSimultaneous>100</maxSimultaneous>
+                <maxDistance>40</maxDistance>
+                <showMaxSimultaneous>false</showMaxSimultaneous>
+            </li>
+            <li Class="GoldenThrone.Attachments.CompProperties_PsydrainCoffin">
+                <daysToKill>15</daysToKill>
+                <!--The psyfocus bonus for while a pawn is inside. This is multiplied by their psychic sensitivity-->
+                <basePsyfocusGain>.05</basePsyfocusGain>
+            </li>
+            <li Class="CompProperties_Power">
+                <compClass>CompPowerTrader</compClass>
+                <basePowerConsumption>40</basePowerConsumption>
+            </li>
+        </comps>
+    </ThingDef>
 </Defs>

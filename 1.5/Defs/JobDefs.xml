@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+    <JobDef>
+        <defName>GWGT_EnterPsydrainCoffin</defName>
+        <driverClass>GoldenThrone.Attachments.JobDriver_EnterPsydrainCoffin</driverClass>
+        <reportString>entering psydrain coffin.</reportString>
+        <allowOpportunisticPrefix>true</allowOpportunisticPrefix>
+    </JobDef>
+</Defs>

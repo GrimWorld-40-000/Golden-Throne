@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+	<GWGT.HasNoModules>No modules attached.</GWGT.HasNoModules>
+	<GWGT.AttachedModules>Has modules attached: {0}/{1} capacity used.</GWGT.AttachedModules>
+	<GWGT.CoffinOccupied>Psydrain Coffin occupied</GWGT.CoffinOccupied>
+	<GWGT.PsychicallyDeaf>Pawn is psychically deaf.</GWGT.PsychicallyDeaf>
+
+	<GWGT.EjectPawn>Dev: Eject pawn</GWGT.EjectPawn>
+	<GWGT.EjectPawnDesc>Eject {PAWN_labelShort} from the psydrain coffin.</GWGT.EjectPawnDesc>
+	<GWGT.ProgressDrain>Dev: Advance 1 day</GWGT.ProgressDrain>
+
+	<GWGT.PsydrainCoffinStatExplanationAbstract>Absorbing the psyche of pawns</GWGT.PsydrainCoffinStatExplanationAbstract>
+	
+	<GWGT.EnterPsydrainCoffin>Enter psydrain coffin</GWGT.EnterPsydrainCoffin>
+
+	<GWGT.PawnLifespanRemaining>Pawn will survive for another {0}.</GWGT.PawnLifespanRemaining>
+
+	
+	<GWGT.PawnPsyfocusGain>{PAWN_labelShort} is giving The Golden Throne {0} more power.</GWGT.PawnPsyfocusGain>
+
+	<GWGT.NoThroneAttached>Not attached to The Golden Throne</GWGT.NoThroneAttached>
+
+</LanguageData>
