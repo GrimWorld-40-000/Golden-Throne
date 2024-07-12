@@ -8,11 +8,12 @@
       "version": "1.0.0",
       "restore": {
         "projectUniqueName": "D:\\SteamLibrary\\steamapps\\common\\RimWorld\\Mods\\Golden-Throne\\1.5\\Source\\GoldenThrone\\GoldenThrone.csproj",
-        "projectName": "RimworldModding",
+        "projectName": "GoldenThrone",
         "projectPath": "D:\\SteamLibrary\\steamapps\\common\\RimWorld\\Mods\\Golden-Throne\\1.5\\Source\\GoldenThrone\\GoldenThrone.csproj",
         "packagesPath": "C:\\Users\\Kennon\\.nuget\\packages\\",
         "outputPath": "D:\\SteamLibrary\\steamapps\\common\\RimWorld\\Mods\\Golden-Throne\\1.5\\Source\\GoldenThrone\\obj\\",
         "projectStyle": "PackageReference",
+        "skipContentFileWrite": true,
         "configFilePaths": [
           "C:\\Users\\Kennon\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
@@ -26,14 +27,12 @@
         },
         "frameworks": {
           "net472": {
-            "targetAlias": "net472",
             "projectReferences": {}
           }
         }
       },
       "frameworks": {
         "net472": {
-          "targetAlias": "net472",
           "dependencies": {
             "Krafs.Rimworld.Ref": {
               "target": "Package",

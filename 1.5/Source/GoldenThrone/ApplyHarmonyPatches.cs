@@ -1,3 +1,6 @@
+using System.Collections.Generic;
+using System.Linq;
+using GoldenThrone.Buildings;
 using HarmonyLib;
 using RimWorld;
 using Verse;
@@ -20,6 +23,11 @@ namespace GoldenThrone
             harmony.Patch(
                 AccessTools.Method(typeof(CompAffectedByFacilities), nameof(CompAffectedByFacilities.Notify_LinkRemoved)),
                 new HarmonyMethod(typeof(ApplyHarmonyPatches), nameof(PostFacilityUnlinkedFromGoldenThrone)));
+            
+            //Pawns prefer the Golden Throne over everything
+            harmony.Patch(
+                AccessTools.Method(typeof(MeditationUtility), nameof(MeditationUtility.AllMeditationSpotCandidates)),
+                prefix: new HarmonyMethod(typeof(ApplyHarmonyPatches), nameof(PostGetMeditationUtility)));
         }
 
         private static void PostFacilityLinkedToGoldenThrone(CompAffectedByFacilities __instance, Thing facility)
@@ -35,6 +43,26 @@ namespace GoldenThrone
             {
                 goldenThrone.OnModuleUnlinked(thing);
             }
+        }
+        private static bool PostGetMeditationUtility(ref IEnumerable<LocalTargetInfo> __result, Pawn pawn, bool allowFallbackSpots = true)
+        {
+            if (TryGetGoldenThroneSpot(pawn, out LocalTargetInfo targetInfo))
+            {
+                __result = new[] { targetInfo };
+            }
+            return false;
+        }
+
+        private static bool TryGetGoldenThroneSpot(Pawn pawn, out LocalTargetInfo targetInfo)
+        {
+            foreach (var building in pawn.Map.listerBuildings.AllBuildingsColonistOfDef(GWGT_DefsOf.GWGT_GoldenThrone).Where(building => building.GetComp<CompGoldenThroneOwnership>().AssignedPawns.Contains(pawn)))
+            {
+                targetInfo = building.InteractionCell;
+                return true;
+            }
+
+            targetInfo = null;
+            return false;
         }
     }
 }

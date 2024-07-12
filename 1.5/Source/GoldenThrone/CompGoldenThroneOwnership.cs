@@ -11,18 +11,18 @@ namespace GoldenThrone
         
         public CompProperties_GoldenThrone()
         {
-            compClass = typeof(CompGoldenThrone);
+            compClass = typeof(CompGoldenThroneOwnership);
         }
     }
 
 
-    public class CompGoldenThrone : CompAssignableToPawn
+    public class CompGoldenThroneOwnership : CompAssignableToPawn
     {
-        public CompProperties_GoldenThrone Props => (CompProperties_GoldenThrone)props;
+        public new CompProperties_GoldenThrone Props => (CompProperties_GoldenThrone)props;
 
         public override IEnumerable<Pawn> AssigningCandidates => !parent.Spawned
             ? Enumerable.Empty<Pawn>()
             : parent.Map.mapPawns.FreeColonists.Where(pawn =>
-                pawn.GetStatValue(StatDefOf.PsychicSensitivity) >= Props.minimumSensitivityToUse);
+                pawn.GetStatValue(StatDefOf.PsychicSensitivity) >= Props.minimumSensitivityToUse && MeditationUtility.IsValidMeditationBuildingForPawn((Building)parent, pawn));
     }
 }

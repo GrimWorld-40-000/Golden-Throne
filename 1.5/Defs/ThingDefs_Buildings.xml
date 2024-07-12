@@ -2,7 +2,7 @@
 <Defs>
     <!--Throne Core-->
     <ThingDef ParentName="FurnitureBase">
-        <defName>GoldenThrone</defName>
+        <defName>GWGT_GoldenThrone</defName>
         <label>Golden Throne</label>
         <description>Big chair make psyker soul go brrrt</description>
         <thingClass>GoldenThrone.Buildings.Building_GoldenThrone</thingClass>
@@ -16,7 +16,7 @@
         <minifiedDef></minifiedDef>
 
         <hasInteractionCell>true</hasInteractionCell>
-        <interactionCellOffset>(0,0,-5)</interactionCellOffset>
+        <interactionCellOffset>(0,0,-2)</interactionCellOffset>
         <socialPropernessMatters>true</socialPropernessMatters>
         <pathCost>30</pathCost>
         <!--<thingSetMakerTags>
@@ -169,7 +169,7 @@
             <li Class="GoldenThrone.Attachments.CompProperties_GoldenThroneAttachment">
                 <capacityCost>2</capacityCost>
                 <maxSimultaneous>100</maxSimultaneous>
-                <maxDistance>40</maxDistance>
+                <maxDistance>25</maxDistance>
                 <showMaxSimultaneous>false</showMaxSimultaneous>
             </li>
             <li Class="GoldenThrone.Attachments.CompProperties_PsydrainCoffin">
