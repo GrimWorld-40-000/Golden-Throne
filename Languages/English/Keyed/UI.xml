@@ -2,7 +2,7 @@
 <LanguageData>
 
 	<GWGT.HasNoModules>No modules attached.</GWGT.HasNoModules>
-	<GWGT.AttachedModules>Has modules attached: {0}/{1} capacity used.</GWGT.AttachedModules>
+	<GWGT.AttachedModules>Modules: {0}/{1} used.</GWGT.AttachedModules>
 	<GWGT.CoffinOccupied>Psydrain Coffin occupied</GWGT.CoffinOccupied>
 	<GWGT.PsychicallyDeaf>Pawn is psychically deaf.</GWGT.PsychicallyDeaf>
 
@@ -20,5 +20,7 @@
 	<GWGT.PawnPsyfocusGain>{PAWN_labelShort} is giving The Golden Throne {0} more power.</GWGT.PawnPsyfocusGain>
 
 	<GWGT.NoThroneAttached>Not attached to The Golden Throne</GWGT.NoThroneAttached>
+
+
 
 </LanguageData>

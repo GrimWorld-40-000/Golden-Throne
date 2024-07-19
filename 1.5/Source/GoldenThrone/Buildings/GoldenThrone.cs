@@ -47,6 +47,8 @@ namespace GoldenThrone.Buildings
             Scribe_Collections.Look(ref _activeAttachmentThingIds, "GWGT_attachedModules");
         }
 
+        public string ModuleCapacityReport => ActiveAttachments.Any() ? "GWGT.AttachedModules".Translate(totalCapacityUsed, MaxModuleCapacity) : "GWGT.HasNoModules".Translate();
+
         private HashSet<CompGoldenThroneAttachment> GetActiveAttachments()
         {
             _tmpAttachmentsSet.Clear();
@@ -90,18 +92,15 @@ namespace GoldenThrone.Buildings
             ClearAttachmentCache();
         }
 
-        public override string GetInspectString()
+
+        public override IEnumerable<Gizmo> GetGizmos()
         {
-            StringBuilder builder = new StringBuilder(base.GetInspectString());
-            if (ActiveAttachments.Any())
+            yield return new GoldenThroneModuleGizmo(this);
+            
+            foreach (Gizmo gizmo in base.GetGizmos())
             {
-                builder.AppendLineIfNotEmpty().Append("GWGT.AttachedModules".Translate(totalCapacityUsed, MaxModuleCapacity));
+                yield return gizmo;
             }
-            else
-            {
-                builder.AppendLineIfNotEmpty().Append("GWGT.HasNoModules".Translate());
-            }
-            return builder.ToString();
         }
     }
 }
