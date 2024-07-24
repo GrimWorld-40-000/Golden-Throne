@@ -21,6 +21,8 @@
 
 	<GWGT.NoThroneAttached>Not attached to The Golden Throne</GWGT.NoThroneAttached>
 
+	<GWGT.ThroneAlreadyExists>There is only one Golden Throne.</GWGT.ThroneAlreadyExists>
 
+	<GWGT.ModuleCapacitySetting>Throne max modules (default 10): {0}</GWGT.ModuleCapacitySetting>
 
 </LanguageData>

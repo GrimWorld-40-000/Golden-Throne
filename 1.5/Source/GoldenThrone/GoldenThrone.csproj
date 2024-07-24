@@ -38,6 +38,10 @@
           <HintPath>..\..\..\..\..\..\..\..\..\RimworldModding\References\0Harmony.dll</HintPath>
           <Private>False</Private>
         </Reference>
+        <Reference Include="GrimWorld_Framework">
+          <HintPath>..\..\..\..\GrimWorld-Framework\1.5\Assemblies\GrimWorld_Framework.dll</HintPath>
+          <Private>False</Private>
+        </Reference>
         <Reference Include="System"/>
         <Reference Include="System.Core"/>
         <Reference Include="System.Data"/>
@@ -45,17 +49,25 @@
     </ItemGroup>
     <ItemGroup>
         <Compile Include="ApplyHarmonyPatches.cs" />
+        <Compile Include="Attachments\CompAntiAging.cs" />
+        <Compile Include="Attachments\CompLifeSupport.cs" />
         <Compile Include="Attachments\CompPsydrainCoffin.cs" />
+        <Compile Include="Attachments\CompThroneFarskip.cs" />
+        <Compile Include="Attachments\CompThroneFarskipAbility.cs" />
         <Compile Include="Attachments\GoldenThroneAttachment.cs" />
+        <Compile Include="Attachments\GoldenThroneAttachmentComp.cs" />
         <Compile Include="Attachments\JobDriver_EnterPsydrainCoffin.cs" />
         <Compile Include="Buildings\GoldenThrone.cs" />
         <Compile Include="Buildings\GoldenThroneModuleGizmo.cs" />
+        <Compile Include="Buildings\PlaceWorker_GoldenThrone.cs" />
         <Compile Include="CompAffectedByGoldenThroneFacilities.cs" />
         <Compile Include="CompGoldenThroneOwnership.cs" />
         <Compile Include="CompMeditationSpotGoldenThrone.cs" />
         <Compile Include="FocusStrengthOffset_GoldenThronePower.cs" />
         <Compile Include="GWGT_DefsOf.cs" />
         <Compile Include="Properties\AssemblyInfo.cs"/>
+        <Compile Include="Settings\SettingsRecord_Chamber.cs" />
+        <Compile Include="Settings\SettingsTabRecord_Chamber.cs" />
     </ItemGroup>
     <ItemGroup>
       <PackageReference Include="Krafs.Rimworld.Ref" Version="1.5.4146-beta" />

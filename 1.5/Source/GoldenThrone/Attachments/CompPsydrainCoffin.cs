@@ -19,23 +19,24 @@ namespace GoldenThrone.Attachments
     }
 
 
-    public class CompPsydrainCoffin: ThingComp, ISuspendableThingHolder
+    public class CompPsydrainCoffin: GoldenThroneAttachmentComp, ISuspendableThingHolder
     {
         public CompProperties_PsydrainCoffin Props => (CompProperties_PsydrainCoffin)props;
      
-        //A long tick is 2000 ticks
+        //Coffin updates every 5000 ticks
         //A day is 60,000 ticks
-        //this is the number of long ticks to kill
-        private float ShockSeverityPerLongTick => 1 / (Props.daysToKill * 30);
+        //this is the number of updates to kill
+        private float ShockSeverityPerCoffinTick => 1 / (Props.daysToKill * 12);
         
         public CompPsydrainCoffin()
         {
             InnerContainer = new ThingOwner<Thing>(this);
         }
 
-        public override void CompTickLong()
+        public override void CompTick()
         {
-            base.CompTickLong();
+            base.CompTick();
+            if (!parent.IsHashIntervalTick(5000)) return;
             Progress1LongTick();
         }
 
@@ -45,11 +46,11 @@ namespace GoldenThrone.Attachments
             //Give psydrain shock
             Hediff shock = Occupant.health.GetOrAddHediff(GWGT_DefsOf.GWGT_PsydrainShock);
 
-            if (shock.Severity + ShockSeverityPerLongTick > 1)
+            if (shock.Severity + ShockSeverityPerCoffinTick > 1)
             {
                 EjectContents();
             }
-            shock.Severity += ShockSeverityPerLongTick;
+            shock.Severity += ShockSeverityPerCoffinTick;
         }
 
         private CompPowerTrader PowerTrader => _compPowerTrader ??= _compPowerTrader = parent.GetComp<CompPowerTrader>();
@@ -138,7 +139,7 @@ namespace GoldenThrone.Attachments
         
         public override IEnumerable<FloatMenuOption> CompFloatMenuOptions(Pawn selPawn)
         {
-            if (parent.GetComp<CompGoldenThroneAttachment>().attachedThrone == null)
+            if (parent.GetComp<CompGoldenThroneAttachment>().AttachedThrone == null)
             {
                 yield return new FloatMenuOption("GWGT.NoThroneAttached".Translate(), null);
                 yield break;

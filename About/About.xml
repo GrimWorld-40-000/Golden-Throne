@@ -1,7 +1,7 @@
 <ModMetaData>
 	<name>Grimworld 40,000 - Golden Throne</name>
 	<author>Clashgore, Abomination, Tittymcswaggy, Samael, Con, Imperator, ThatHitmann</author>
-	<packageId>Grimworld.Golden-Throne</packageId>
+	<packageId>Grimworld.GoldenThrone</packageId>
 	<modIconPath IgnoreIfNoMatchingField="True">UI/Icons/GoldenThroneIcon</modIconPath>
 	<supportedVersions>
       <li>1.5</li>

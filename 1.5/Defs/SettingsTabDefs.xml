@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<GW_Frame.Settings.SettingsTabDef>
+		<defName>GoldenThroneSettings</defName>
+		<label>Golden Throne</label>
+		<settingsTabClass>GoldenThrone.Settings.SettingsTabRecord_GoldenThrone</settingsTabClass>
+		<settingsRecordClass>GoldenThrone.Settings.SettingsRecord_GoldenThrone</settingsRecordClass>
+	</GW_Frame.Settings.SettingsTabDef>
+</Defs>

@@ -9,5 +9,6 @@ namespace GoldenThrone
         public static HediffDef GWGT_PsydrainShock;
         public static JobDef GWGT_EnterPsydrainCoffin;
         public static ThingDef GWGT_GoldenThrone;
+        public static AbilityDef GWGT_ThroneFarskip;
     }
 }

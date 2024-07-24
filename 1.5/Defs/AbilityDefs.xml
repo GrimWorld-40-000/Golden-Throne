@@ -1,0 +1,40 @@
+<Defs>
+    <AbilityDef>
+        <defName>GWGT_ThroneFarskip</defName>
+        <label>farskip</label>
+        <description>Skip everyone around the throne to an ally at a distant location. This can send people far across the planet, but only works if there is a willing ally on the other side to use as a navigation beacon, and it costs the caster years off of their life. The skipped people will always appear near a random ally on the target map.</description>
+        <!--<level>5</level>-->
+        <iconPath>UI/Abilities/Farskip</iconPath>
+        <targetWorldCell>True</targetWorldCell>
+        <showGizmoOnWorldView>True</showGizmoOnWorldView>
+        <hostile>false</hostile>
+        <category>Skip</category>
+        <warmupSound>PsycastCastLoop</warmupSound>
+        <casterMustBeCapableOfViolence>false</casterMustBeCapableOfViolence>
+        <statBases>
+          <Ability_EffectRadius>19.9</Ability_EffectRadius>
+          <Ability_Duration>0</Ability_Duration>
+        </statBases>
+        <verbProperties>
+            <verbClass>Verb_CastPsycast</verbClass>
+            <targetParams>
+              <canTargetBuildings>False</canTargetBuildings>
+              <canTargetAnimals>False</canTargetAnimals>
+              <thingCategory>Item</thingCategory>
+              <mapObjectTargetsMustBeAutoAttackable>False</mapObjectTargetsMustBeAutoAttackable>
+            </targetParams>
+            <warmupTime>5</warmupTime>
+            <range>19.9</range>
+            <drawAimPie>False</drawAimPie>
+            <requireLineOfSight>False</requireLineOfSight>
+        </verbProperties>
+        <comps>
+          <li Class="GoldenThrone.Attachments.CompProperties_ThroneFarskipAbility">
+            <stunTicks>18~60</stunTicks>
+            <clamorType>Ability</clamorType>
+            <clamorRadius>10</clamorRadius>
+            <ageCostYears>5</ageCostYears>
+          </li>
+        </comps>
+      </AbilityDef>
+</Defs>

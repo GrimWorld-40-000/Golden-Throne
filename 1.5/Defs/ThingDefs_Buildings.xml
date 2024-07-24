@@ -19,19 +19,16 @@
         <interactionCellOffset>(0,0,-2)</interactionCellOffset>
         <socialPropernessMatters>true</socialPropernessMatters>
         <pathCost>30</pathCost>
-        <!--<thingSetMakerTags>
-            <li>RewardStandardQualitySuper</li>
-        </thingSetMakerTags>-->
         <building>
             <isSittable>true</isSittable>
         </building>
         <ritualFocus>
-            <!--TODO: tweak this once it's full-sized-->
             <spectateDistance>10</spectateDistance>
             <allowedSpectateSides>Up</allowedSpectateSides>
         </ritualFocus>
         <placeWorkers>
             <li>PlaceWorker_RitualFocus</li>
+            <li>GoldenThrone.Buildings.PlaceWorker_GoldenThrone</li>
         </placeWorkers>
         <drawPlaceWorkersWhileSelected>True</drawPlaceWorkersWhileSelected>
 
@@ -60,9 +57,12 @@
         </costList>
         <comps>
             <li Class="GoldenThrone.CompProperties_AffectedByGoldenThroneFacilities">
-              <linkableFacilities>
-                <li>GWGT_PsydrainCoffin</li>
-              </linkableFacilities>
+                <linkableFacilities>
+                    <li>GWGT_PsydrainCoffin</li>
+                    <li>GWGT_AntiAging</li>
+                    <li>GWGT_LifeSupport</li>
+                    <li>GWGT_Farskip</li>
+                </linkableFacilities>
             </li>
             <li Class="GoldenThrone.CompProperties_GoldenThrone">
                 <drawAssignmentOverlay>true</drawAssignmentOverlay>
@@ -123,6 +123,7 @@
         <altitudeLayer>Building</altitudeLayer>
         <passability>PassThroughOnly</passability>
         <castEdgeShadows>true</castEdgeShadows>
+        <tickerType>Normal</tickerType>
         <pathCost>42</pathCost>
         <canOverlapZones>false</canOverlapZones>
         <researchPrerequisites>
@@ -180,6 +181,166 @@
             <li Class="CompProperties_Power">
                 <compClass>CompPowerTrader</compClass>
                 <basePowerConsumption>40</basePowerConsumption>
+            </li>
+        </comps>
+    </ThingDef>
+
+
+    <ThingDef ParentName="GoldenThroneLinkableBase">
+        <defName>GWGT_AntiAging</defName>
+        <label>senescence suppressor</label>
+        <description>A powerful device which regulates the biological processes of the pawn on the Golden Throne. Slows down pawn aging significantly.\n\nCosts 3 capacity</description>
+        <graphicData>
+          <texPath>Things/Building/Misc/ToolCabinet</texPath>
+          <graphicClass>Graphic_Multi</graphicClass>
+          <drawSize>(2,2)</drawSize>
+          <damageData>
+            <cornerTL>Damage/Corner</cornerTL>
+            <cornerTR>Damage/Corner</cornerTR>
+            <cornerBL>Damage/Corner</cornerBL>
+            <cornerBR>Damage/Corner</cornerBR>
+          </damageData>
+        </graphicData>
+        <statBases>
+          <MaxHitPoints>100</MaxHitPoints>
+          <WorkToBuild>2400</WorkToBuild>
+          <Mass>20</Mass>
+          <Flammability>0.5</Flammability>
+        </statBases>
+        <staticSunShadowHeight>0.35</staticSunShadowHeight>
+        <fillPercent>0.5</fillPercent>
+        <size>(2,2)</size>
+        <costList>
+          <Steel>240</Steel>
+          <HP_Auramite>2</HP_Auramite>
+          <ComponentSpacer>1</ComponentSpacer>
+        </costList>
+        <constructionSkillPrerequisite>8</constructionSkillPrerequisite>
+        
+        <comps>
+            <li Class="GoldenThrone.Attachments.CompProperties_GoldenThroneAttachment">
+                <capacityCost>3</capacityCost>
+                <maxSimultaneous>1</maxSimultaneous>
+                <maxDistance>25</maxDistance>
+                <showMaxSimultaneous>true</showMaxSimultaneous>
+            </li>
+            <li Class="GoldenThrone.Attachments.CompProperties_AntiAging">
+                <!--This is the multiplier on how long it takes to age. For example, if it's set to 4 the pawn will age 1 year every 4 chronological years-->
+                <agingMultiplier>4</agingMultiplier>
+            </li>
+            <li Class="CompProperties_Power">
+                <compClass>CompPowerTrader</compClass>
+                <basePowerConsumption>40</basePowerConsumption>
+            </li>
+        </comps>
+    </ThingDef>
+
+
+    
+    <ThingDef ParentName="GoldenThroneLinkableBase">
+        <defName>GWGT_LifeSupport</defName>
+        <label>life supporter</label>
+        <description>A module to provide all needs for the pawn on the Golden Throne. Power and resources skipped from the Webway provide from seemingly nowhere.\n\nCosts 3 capacity</description>
+        <graphicData>
+          <texPath>Things/Building/Misc/ToolCabinet</texPath>
+          <graphicClass>Graphic_Multi</graphicClass>
+          <drawSize>(2,2)</drawSize>
+          <damageData>
+            <cornerTL>Damage/Corner</cornerTL>
+            <cornerTR>Damage/Corner</cornerTR>
+            <cornerBL>Damage/Corner</cornerBL>
+            <cornerBR>Damage/Corner</cornerBR>
+          </damageData>
+        </graphicData>
+        <statBases>
+          <MaxHitPoints>100</MaxHitPoints>
+          <WorkToBuild>2400</WorkToBuild>
+          <Mass>20</Mass>
+          <Flammability>0.5</Flammability>
+        </statBases>
+        <staticSunShadowHeight>0.35</staticSunShadowHeight>
+        <fillPercent>0.5</fillPercent>
+        <size>(2,2)</size>
+        <costList>
+          <Steel>120</Steel>
+          <Plasteel>20</Plasteel>
+          <HP_Auramite>3</HP_Auramite>
+          <ComponentSpacer>2</ComponentSpacer>
+        </costList>
+        <constructionSkillPrerequisite>8</constructionSkillPrerequisite>
+        
+        <comps>
+            <li Class="GoldenThrone.Attachments.CompProperties_GoldenThroneAttachment">
+                <capacityCost>3</capacityCost>
+                <maxSimultaneous>1</maxSimultaneous>
+                <maxDistance>25</maxDistance>
+                <showMaxSimultaneous>true</showMaxSimultaneous>
+            </li>
+            <li Class="GoldenThrone.Attachments.CompProperties_LifeSupport">
+                <!--This is the multiplier on how long it takes to age. For example, if it's set to 4 the pawn will age 1 year every 4 chronological years-->
+                <needsProvidedFor>
+                    <li>Food</li>
+                    <li>Rest</li>
+                    <li>Joy</li>
+                    <li>DrugDesire</li>
+
+                    <li MayRequire="dubwise.dubsbadhygiene">Bladder</li>
+                    <li MayRequire="dubwise.dubsbadhygiene">Hygiene</li>
+                    <li MayRequire="dubwise.dubsbadhygiene">DBHThirst</li>
+                </needsProvidedFor>
+            </li>
+            <li Class="CompProperties_Power">
+                <compClass>CompPowerTrader</compClass>
+                <basePowerConsumption>750</basePowerConsumption>
+            </li>
+        </comps>
+    </ThingDef>
+
+    
+    <ThingDef ParentName="GoldenThroneLinkableBase">
+        <defName>GWGT_Farskip</defName>
+        <label>farskip module</label>
+        <description>Allows the psyker on the throne to access the Eldar Webway, sending all nearby allies to a location of their choice.\n\nCosts 4 capacity</description>
+        <graphicData>
+          <texPath>Things/Building/Misc/ToolCabinet</texPath>
+          <graphicClass>Graphic_Multi</graphicClass>
+          <drawSize>(2,2)</drawSize>
+          <damageData>
+            <cornerTL>Damage/Corner</cornerTL>
+            <cornerTR>Damage/Corner</cornerTR>
+            <cornerBL>Damage/Corner</cornerBL>
+            <cornerBR>Damage/Corner</cornerBR>
+          </damageData>
+        </graphicData>
+        <statBases>
+          <MaxHitPoints>100</MaxHitPoints>
+          <WorkToBuild>2400</WorkToBuild>
+          <Mass>20</Mass>
+          <Flammability>0.5</Flammability>
+        </statBases>
+        <staticSunShadowHeight>0.35</staticSunShadowHeight>
+        <fillPercent>0.5</fillPercent>
+        <size>(2,2)</size>
+        <costList>
+          <Steel>120</Steel>
+          <Plasteel>20</Plasteel>
+          <HP_Auramite>3</HP_Auramite>
+          <ComponentSpacer>2</ComponentSpacer>
+        </costList>
+        <constructionSkillPrerequisite>8</constructionSkillPrerequisite>
+        
+        <comps>
+            <li Class="GoldenThrone.Attachments.CompProperties_GoldenThroneAttachment">
+                <capacityCost>4</capacityCost>
+                <maxSimultaneous>1</maxSimultaneous>
+                <maxDistance>25</maxDistance>
+                <showMaxSimultaneous>true</showMaxSimultaneous>
+            </li>
+            <li Class="GoldenThrone.Attachments.CompProperties_ThroneFarskip">
+            </li>
+            <li Class="CompProperties_Power">
+                <compClass>CompPowerTrader</compClass>
+                <basePowerConsumption>250</basePowerConsumption>
             </li>
         </comps>
     </ThingDef>

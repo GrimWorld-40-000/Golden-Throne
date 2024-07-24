@@ -1,3 +1,4 @@
+using GoldenThrone.Attachments;
 using RimWorld;
 using Verse;
 
@@ -29,6 +30,7 @@ namespace GoldenThrone
             if (parent is Buildings.Building_GoldenThrone throne)
             {
                 throne.TryRemoveModule(module);
+                module.TryGetComp<CompGoldenThroneAttachment>().Disconnect();
             }
         }
     }

@@ -24,5 +24,8 @@ namespace GoldenThrone
             ? Enumerable.Empty<Pawn>()
             : parent.Map.mapPawns.FreeColonists.Where(pawn =>
                 pawn.GetStatValue(StatDefOf.PsychicSensitivity) >= Props.minimumSensitivityToUse && MeditationUtility.IsValidMeditationBuildingForPawn((Building)parent, pawn));
+        
+        
+        
     }
 }

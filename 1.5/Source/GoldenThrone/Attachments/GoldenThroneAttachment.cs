@@ -1,3 +1,4 @@
+using System.Text;
 using RimWorld;
 using UnityEngine;
 using Verse;
@@ -36,19 +37,29 @@ namespace GoldenThrone.Attachments
 
         public int CapacityCost => Props.capacityCost;
 
-        public Buildings.Building_GoldenThrone attachedThrone;
+        public Buildings.Building_GoldenThrone AttachedThrone;
 
         public override void PostExposeData()
         {
             base.PostExposeData();
-            Scribe_References.Look(ref attachedThrone, "GWGT_attachedThrone");
+            Scribe_References.Look(ref AttachedThrone, "GWGT_attachedThrone");
+        }
+
+        public override string CompInspectStringExtra()
+        {
+            return AttachedThrone == null ? new StringBuilder(base.CompInspectStringExtra()).AppendLineIfNotEmpty().Append("GWGT.NoThroneAttached".Translate().Colorize(Color.red)).ToString() : base.CompInspectStringExtra();
+        }
+
+        public void Disconnect()
+        {
+            AttachedThrone = null;
         }
 
         public override void PostDraw()
         {
-            if (attachedThrone == null) return;
+            if (AttachedThrone == null) return;
             
-            Vector3 a = attachedThrone.TrueCenter();
+            Vector3 a = AttachedThrone.TrueCenter();
             Vector3 b = parent.TrueCenter();
             a.y = b.y = AltitudeLayer.SmallWire.AltitudeFor();
             Matrix4x4 identity = Matrix4x4.identity;

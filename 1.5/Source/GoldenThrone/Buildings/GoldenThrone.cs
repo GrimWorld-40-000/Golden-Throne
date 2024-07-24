@@ -16,7 +16,7 @@ namespace GoldenThrone.Buildings
         
         public static int MaxModuleCapacity = 10;
 
-        public int totalCapacityUsed => ActiveAttachments.Sum(attachment => attachment.CapacityCost);
+        public int TotalCapacityUsed => ActiveAttachments.Sum(attachment => attachment.CapacityCost);
 
         public List<CompGoldenThroneAttachment> ActiveAttachments => _cachedActiveAttachments ??= GetActiveAttachments().ToList();
         private List<CompGoldenThroneAttachment> _cachedActiveAttachments;
@@ -47,7 +47,7 @@ namespace GoldenThrone.Buildings
             Scribe_Collections.Look(ref _activeAttachmentThingIds, "GWGT_attachedModules");
         }
 
-        public string ModuleCapacityReport => ActiveAttachments.Any() ? "GWGT.AttachedModules".Translate(totalCapacityUsed, MaxModuleCapacity) : "GWGT.HasNoModules".Translate();
+        public string ModuleCapacityReport => ActiveAttachments.Any() ? "GWGT.AttachedModules".Translate(TotalCapacityUsed, MaxModuleCapacity) : "GWGT.HasNoModules".Translate();
 
         private HashSet<CompGoldenThroneAttachment> GetActiveAttachments()
         {
@@ -73,7 +73,7 @@ namespace GoldenThrone.Buildings
         public override void Destroy(DestroyMode mode = DestroyMode.Vanish)
         {
             base.Destroy(mode);
-            Attachments.Do(attachment => attachment.attachedThrone = null);
+            Attachments.Do(attachment => attachment.Disconnect());
         }
 
         public void TryAddNewModule(Thing module)
@@ -82,13 +82,14 @@ namespace GoldenThrone.Buildings
             if (module.TryGetComp(out CompGoldenThroneAttachment attachment))
             {
                 //If we have room for it, add it
-                if (attachment.CapacityCost + totalCapacityUsed <= MaxModuleCapacity)
+                if (attachment.CapacityCost + TotalCapacityUsed <= MaxModuleCapacity)
                 {
                     //Attach this to the module
-                    attachment.attachedThrone = this;
+                    attachment.AttachedThrone = this;
                     _activeAttachmentThingIds.Add(module.thingIDNumber);
                 }
             }
+            
             ClearAttachmentCache();
         }
 

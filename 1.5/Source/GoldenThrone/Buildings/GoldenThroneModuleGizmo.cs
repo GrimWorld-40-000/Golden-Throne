@@ -53,7 +53,7 @@ namespace GoldenThrone.Buildings
             
             Widgets.DrawRectFast(rect, new Color(0.6215686275f, 0.4882352941f, 0));
             
-            Widgets.DrawRectFast(new Rect(rect.x, rect.y, GetTickX(rect, Throne.totalCapacityUsed) - rect.x, rect.height), new Color(0.9215686275f, 0.7882352941f, 0.1294117647f));
+            Widgets.DrawRectFast(new Rect(rect.x, rect.y, GetTickX(rect, Throne.TotalCapacityUsed) - rect.x, rect.height), new Color(0.9215686275f, 0.7882352941f, 0.1294117647f));
 
             float topY = rect.y + 3;
             float bottomY = rect.y + rect.height;
