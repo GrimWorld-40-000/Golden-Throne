@@ -1,0 +1,15 @@
+<Defs>
+    <ThoughtDef>
+        <defName>GWGT_PsystormEcho</defName>
+        <durationDays>10.0</durationDays>
+        <stackLimit>3</stackLimit>
+        <developmentalStageFilter>Baby, Child, Adult</developmentalStageFilter>
+        <stages>
+          <li>
+            <label>psystorm echo</label>
+            <description>Distant, unfamiliar echoes of terror and grief. It makes me feel nervous and shaky.</description>
+            <baseMoodEffect>-16</baseMoodEffect>
+          </li>
+        </stages>
+    </ThoughtDef>
+</Defs>

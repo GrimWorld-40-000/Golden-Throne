@@ -3,25 +3,25 @@
         <defName>GWGT_ThroneFarskip</defName>
         <label>farskip</label>
         <description>Skip everyone around the throne to an ally at a distant location. This can send people far across the planet, but only works if there is a willing ally on the other side to use as a navigation beacon, and it costs the caster years off of their life. The skipped people will always appear near a random ally on the target map.</description>
-        <!--<level>5</level>-->
         <iconPath>UI/Abilities/Farskip</iconPath>
         <targetWorldCell>True</targetWorldCell>
         <showGizmoOnWorldView>True</showGizmoOnWorldView>
+        <disableGizmoWhileUndrafted>false</disableGizmoWhileUndrafted>
         <hostile>false</hostile>
         <category>Skip</category>
         <warmupSound>PsycastCastLoop</warmupSound>
         <casterMustBeCapableOfViolence>false</casterMustBeCapableOfViolence>
         <statBases>
-          <Ability_EffectRadius>19.9</Ability_EffectRadius>
-          <Ability_Duration>0</Ability_Duration>
+            <Ability_EffectRadius>19.9</Ability_EffectRadius>
+            <Ability_Duration>0</Ability_Duration>
         </statBases>
         <verbProperties>
             <verbClass>Verb_CastPsycast</verbClass>
             <targetParams>
-              <canTargetBuildings>False</canTargetBuildings>
-              <canTargetAnimals>False</canTargetAnimals>
-              <thingCategory>Item</thingCategory>
-              <mapObjectTargetsMustBeAutoAttackable>False</mapObjectTargetsMustBeAutoAttackable>
+                <canTargetBuildings>False</canTargetBuildings>
+                <canTargetAnimals>False</canTargetAnimals>
+                <thingCategory>Item</thingCategory>
+                <mapObjectTargetsMustBeAutoAttackable>False</mapObjectTargetsMustBeAutoAttackable>
             </targetParams>
             <warmupTime>5</warmupTime>
             <range>19.9</range>
@@ -29,12 +29,75 @@
             <requireLineOfSight>False</requireLineOfSight>
         </verbProperties>
         <comps>
-          <li Class="GoldenThrone.Attachments.CompProperties_ThroneFarskipAbility">
-            <stunTicks>18~60</stunTicks>
-            <clamorType>Ability</clamorType>
-            <clamorRadius>10</clamorRadius>
-            <ageCostYears>5</ageCostYears>
-          </li>
+            <li Class="GoldenThrone.Attachments.CompProperties_ThroneFarskipAbility">
+                <stunTicks>18~60</stunTicks>
+                <clamorType>Ability</clamorType>
+                <clamorRadius>10</clamorRadius>
+                <ageCostYears>5</ageCostYears>
+            </li>
         </comps>
+    </AbilityDef>
+
+
+    <AbilityDef>
+        <defName>GWGT_Psystorm</defName>
+        <label>psystorm</label>
+        <description>Tap into the Webway to lash out at all sentient creatures with a psychic presence. Anyone who isn't standing near the Golden Throne will be indiscriminately attacked by a lethal barrage of psychic energy. Distant settlements will be unaffected but still feel the echoes of the attack, causing diplomatic repercussions.</description>
+        <iconPath>UI/Abilities/Neuroquake</iconPath>
+        <jobDef>CastAbilityOnThingUninterruptible</jobDef>
+        <targetRequired>False</targetRequired>
+        <canUseAoeToGetTargets>False</canUseAoeToGetTargets>
+        <disableGizmoWhileUndrafted>false</disableGizmoWhileUndrafted>
+        <showPsycastEffects>False</showPsycastEffects>
+        <showCastingProgressBar>True</showCastingProgressBar>
+        <warmupMote>Mote_WarmupNeuroquake</warmupMote>
+        <warmupStartSound>Psycast_Neuroquake_CastStart</warmupStartSound>
+        <warmupSound>Psycast_Neuroquake_CastLoop</warmupSound>
+        <warmupPreEndSound>Psycast_Neuroquake_CastEnd</warmupPreEndSound>
+        <warmupPreEndSoundSeconds>5</warmupPreEndSoundSeconds>
+        <hostile>false</hostile>
+        <statBases>
+          <Ability_EffectRadius>5.9</Ability_EffectRadius>
+          <Ability_Duration>4800</Ability_Duration>
+        </statBases>
+        <category>Psychic</category>
+        <verbProperties>
+            <verbClass>Verb_CastPsycast</verbClass>
+            <targetParams>
+                <canTargetBuildings>False</canTargetBuildings>
+                <canTargetAnimals>False</canTargetAnimals>
+                <thingCategory>Item</thingCategory>
+                <mapObjectTargetsMustBeAutoAttackable>False</mapObjectTargetsMustBeAutoAttackable>
+                <canTargetSelf>True</canTargetSelf>
+            </targetParams>
+            <warmupTime>12</warmupTime>
+            <range>19.9</range>
+            <drawAimPie>False</drawAimPie>
+            <requireLineOfSight>False</requireLineOfSight>
+        </verbProperties>
+        <comps>
+            <li Class="GoldenThrone.Attachments.CompProperties_ThronePsystormAbility">
+                <goodwillImpactForKill>-75</goodwillImpactForKill>
+                <goodwillImpactForCast>-10</goodwillImpactForCast>
+                <worldRangeTiles>4</worldRangeTiles>
+                <screenShakeIntensity>2</screenShakeIntensity>
+                <attackRadius>60</attackRadius>
+                <!--Will do 3 to 5 random bonus hits-->
+                <hitsRange>3~5</hitsRange>
+                <damageRange>0.3~10</damageRange>
+            </li>
+            <!--<li Class="CompProperties_AbilityGiveHediff">
+                <compClass>CompAbilityEffect_GiveHediff</compClass>
+                <hediffDef>PsychicComa</hediffDef>
+                <onlyApplyToSelf>True</onlyApplyToSelf>
+            </li>-->
+            <li Class="CompProperties_AbilityFleckOnTarget">
+                <fleckDef>PsychicApplyNeuroquake</fleckDef>
+                <sound>Psycast_Neuroquake_Effect</sound>
+            </li>
+        </comps>
+        <confirmationDialogText>The Psystorm will cause destruction to unfold outward, killing all sentient life within a short range, and causing pain to settlements nearby. You will lose goodwill with every non-hostile faction.\n\nDo you really want to trigger the Psystorm?</confirmationDialogText>
       </AbilityDef>
+
+
 </Defs>

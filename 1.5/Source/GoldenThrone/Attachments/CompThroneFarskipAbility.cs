@@ -72,7 +72,6 @@ namespace GoldenThrone.Attachments
                     if ((pawn.IsColonist || pawn.RaceProps.packAnimal || pawn.IsColonyMech) && pawn.Map.IsPlayerHome)
                         pawn.inventory.UnloadEverything = true;
                 }
-
             }
             else if ((target.WorldObject is not Caravan worldObject ? 0 : worldObject.Faction == parent.pawn.Faction ? 1 : 0) != 0)
             {

@@ -98,6 +98,11 @@ namespace GoldenThrone.Buildings
         {
             yield return new GoldenThroneModuleGizmo(this);
             
+            foreach (var moduleGizmo in ActiveAttachments.SelectMany(compGoldenThroneAttachment => compGoldenThroneAttachment.GetModuleGizmos()))
+            {
+                yield return moduleGizmo;
+            }
+            
             foreach (Gizmo gizmo in base.GetGizmos())
             {
                 yield return gizmo;

@@ -62,6 +62,7 @@
                     <li>GWGT_AntiAging</li>
                     <li>GWGT_LifeSupport</li>
                     <li>GWGT_Farskip</li>
+                    <li>GWGT_Psystorm</li>
                 </linkableFacilities>
             </li>
             <li Class="GoldenThrone.CompProperties_GoldenThrone">
@@ -337,6 +338,55 @@
                 <showMaxSimultaneous>true</showMaxSimultaneous>
             </li>
             <li Class="GoldenThrone.Attachments.CompProperties_ThroneFarskip">
+            </li>
+            <li Class="CompProperties_Power">
+                <compClass>CompPowerTrader</compClass>
+                <basePowerConsumption>250</basePowerConsumption>
+            </li>
+        </comps>
+    </ThingDef>
+
+    
+    <ThingDef ParentName="GoldenThroneLinkableBase">
+        <defName>GWGT_Psystorm</defName>
+        <label>psystorm module</label>
+        <description>Allows the psyker on the throne to access the Eldar Webway, psychically assaulting all nearby beings.\n\nCosts 4 capacity</description>
+        <graphicData>
+          <texPath>Things/Building/Misc/ToolCabinet</texPath>
+          <graphicClass>Graphic_Multi</graphicClass>
+          <drawSize>(2,2)</drawSize>
+          <damageData>
+            <cornerTL>Damage/Corner</cornerTL>
+            <cornerTR>Damage/Corner</cornerTR>
+            <cornerBL>Damage/Corner</cornerBL>
+            <cornerBR>Damage/Corner</cornerBR>
+          </damageData>
+        </graphicData>
+        <statBases>
+          <MaxHitPoints>100</MaxHitPoints>
+          <WorkToBuild>2400</WorkToBuild>
+          <Mass>20</Mass>
+          <Flammability>0.5</Flammability>
+        </statBases>
+        <staticSunShadowHeight>0.35</staticSunShadowHeight>
+        <fillPercent>0.5</fillPercent>
+        <size>(2,2)</size>
+        <costList>
+          <Steel>240</Steel>
+          <HP_Auramite>4</HP_Auramite>
+          <ComponentSpacer>2</ComponentSpacer>
+        </costList>
+        <constructionSkillPrerequisite>8</constructionSkillPrerequisite>
+        
+        <comps>
+            <li Class="GoldenThrone.Attachments.CompProperties_GoldenThroneAttachment">
+                <capacityCost>4</capacityCost>
+                <maxSimultaneous>1</maxSimultaneous>
+                <maxDistance>25</maxDistance>
+                <showMaxSimultaneous>true</showMaxSimultaneous>
+            </li>
+            <li Class="GoldenThrone.Attachments.CompProperties_ThronePsystorm">
+                <ticksCooldown>1800</ticksCooldown>
             </li>
             <li Class="CompProperties_Power">
                 <compClass>CompPowerTrader</compClass>

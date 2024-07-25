@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System.Linq;
 using GoldenThrone.Buildings;
 using RimWorld;
 using Verse;
@@ -50,6 +52,27 @@ namespace GoldenThrone.Attachments
             }
 
             return true;
+        }
+
+        /// <summary>
+        /// Yields all gizmos created by attached modules.
+        /// </summary>
+        /// <returns></returns>
+        public virtual IEnumerable<Gizmo> GetModuleGizmos()
+        {
+            yield break;
+        }
+
+        public override IEnumerable<Gizmo> CompGetGizmosExtra()
+        {
+            foreach (Gizmo gizmo in GetModuleGizmos())
+            {
+                yield return gizmo;
+            }
+            foreach (Gizmo gizmo in base.CompGetGizmosExtra())
+            {
+                yield return gizmo;
+            }
         }
     }
 }

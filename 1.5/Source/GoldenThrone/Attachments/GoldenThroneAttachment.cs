@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using RimWorld;
 using UnityEngine;
@@ -65,6 +67,16 @@ namespace GoldenThrone.Attachments
             Matrix4x4 identity = Matrix4x4.identity;
             identity.SetTRS((a + b) / 2f, Quaternion.Euler(0.0f, a.AngleToFlat(b) + 90f, 0.0f), new Vector3(1f, 1f, (a - b).MagnitudeHorizontal()));
             Graphics.DrawMesh(MeshPool.plane10, identity, HoseMat, 0);
+        }
+
+
+        private List<GoldenThroneAttachmentComp> Attachments =>
+            _attachments ??= parent.GetComps<GoldenThroneAttachmentComp>().ToList();
+        private List<GoldenThroneAttachmentComp> _attachments;
+        
+        public IEnumerable<Gizmo> GetModuleGizmos()
+        {
+            return Attachments.SelectMany(goldenThroneAttachmentComp => goldenThroneAttachmentComp.GetModuleGizmos());
         }
     }
 }

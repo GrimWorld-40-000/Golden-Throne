@@ -23,18 +23,13 @@ namespace GoldenThrone.Attachments
         private CompPowerTrader _compPowerTrader;
         private bool PowerOn => PowerTrader.PowerOn;
 
-        public override IEnumerable<Gizmo> CompGetGizmosExtra()
+        public override IEnumerable<Gizmo> GetModuleGizmos()
         {
             if (!IsThroneOccupied(out Pawn pawn)) yield break;
             Command_Ability farskip = new Command_Ability(AbilityUtility.MakeAbility(GWGT_DefsOf.GWGT_ThroneFarskip, pawn), pawn);
             if (!PowerOn) farskip.Disabled = true;
 
             yield return farskip;
-                
-            foreach (Gizmo gizmo in base.CompGetGizmosExtra())
-            {
-                yield return gizmo;
-            }
         }
     }
 }

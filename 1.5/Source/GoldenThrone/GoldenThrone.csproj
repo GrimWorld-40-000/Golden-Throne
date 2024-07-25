@@ -54,6 +54,8 @@
         <Compile Include="Attachments\CompPsydrainCoffin.cs" />
         <Compile Include="Attachments\CompThroneFarskip.cs" />
         <Compile Include="Attachments\CompThroneFarskipAbility.cs" />
+        <Compile Include="Attachments\CompThronePsystorm.cs" />
+        <Compile Include="Attachments\CompThronePsystormAbility.cs" />
         <Compile Include="Attachments\GoldenThroneAttachment.cs" />
         <Compile Include="Attachments\GoldenThroneAttachmentComp.cs" />
         <Compile Include="Attachments\JobDriver_EnterPsydrainCoffin.cs" />
