@@ -53,11 +53,6 @@ namespace GoldenThrone.Attachments
             shock.Severity += ShockSeverityPerCoffinTick;
         }
 
-        private CompPowerTrader PowerTrader => _compPowerTrader ??= _compPowerTrader = parent.GetComp<CompPowerTrader>();
-        private CompPowerTrader _compPowerTrader;
-
-        private bool PowerOn => PowerTrader.PowerOn;
-
         private ThingOwner InnerContainer;
 
         public bool IsContentsSuspended => true;
@@ -154,9 +149,9 @@ namespace GoldenThrone.Attachments
                 yield return new FloatMenuOption("CannotUseNoPath".Translate(), null);
                 yield break;
             }
-            if (!PowerOn)
+            if (!Active)
             {
-                yield return new FloatMenuOption("CannotUseNoPower".Translate(), null);
+                yield return new FloatMenuOption("GWGT.ModuleCannotFunction".Translate(), null);
                 yield break;
             }
             if (selPawn.GetStatValue(StatDefOf.PsychicSensitivity) <= 0)

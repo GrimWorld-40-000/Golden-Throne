@@ -18,16 +18,13 @@ namespace GoldenThrone.Attachments
         
         public CompProperties_ThroneFarskip Props => (CompProperties_ThroneFarskip)props;
         
-        
-        private CompPowerTrader PowerTrader => _compPowerTrader ??= _compPowerTrader = parent.GetComp<CompPowerTrader>();
-        private CompPowerTrader _compPowerTrader;
-        private bool PowerOn => PowerTrader.PowerOn;
 
         public override IEnumerable<Gizmo> GetModuleGizmos()
         {
             if (!IsThroneOccupied(out Pawn pawn)) yield break;
+            if (ThroneDisabled) yield break;
             Command_Ability farskip = new Command_Ability(AbilityUtility.MakeAbility(GWGT_DefsOf.GWGT_ThroneFarskip, pawn), pawn);
-            if (!PowerOn) farskip.Disabled = true;
+            if (!Active) farskip.Disabled = true;
 
             yield return farskip;
         }

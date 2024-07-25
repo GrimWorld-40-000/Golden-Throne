@@ -25,4 +25,8 @@
 
 	<GWGT.ModuleCapacitySetting>Throne max modules (default 10): {0}</GWGT.ModuleCapacitySetting>
 
+	<GWGT.ThroneroomNotAdequate>Throne must be placed in a roofed room with no beds, biotech buildings, anomaly buildings, altars, or work facilities.</GWGT.ThroneroomNotAdequate>
+
+	<GWGT.ModuleCannotFunction>Module cannot function due to no power or a nonfunctional Golden Throne.</GWGT.ModuleCannotFunction>
+
 </LanguageData>

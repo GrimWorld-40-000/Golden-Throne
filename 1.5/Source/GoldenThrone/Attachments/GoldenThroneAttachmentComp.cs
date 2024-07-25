@@ -17,6 +17,19 @@ namespace GoldenThrone.Attachments
         public CompGoldenThroneOwnership ThroneOwnership =>
             _throneOwnership ??= Throne?.GetComp<CompGoldenThroneOwnership>();
         private CompGoldenThroneOwnership _throneOwnership;
+        
+        
+        
+        
+        private CompPowerTrader PowerTrader => _compPowerTrader ??= _compPowerTrader = parent.GetComp<CompPowerTrader>();
+        private CompPowerTrader _compPowerTrader;
+        private bool PowerOn => PowerTrader.PowerOn;
+
+        protected bool Active => PowerOn && (Throne?.IsEnabled ?? false);
+        
+        protected bool ThroneDisabled => !(Throne?.IsEnabled ?? false);
+        
+        
 
 
         private Pawn _cachedUser;

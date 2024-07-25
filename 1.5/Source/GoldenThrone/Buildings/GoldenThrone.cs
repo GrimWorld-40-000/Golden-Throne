@@ -4,6 +4,7 @@ using System.Text;
 using GoldenThrone.Attachments;
 using HarmonyLib;
 using RimWorld;
+using UnityEngine;
 using Verse;
 
 namespace GoldenThrone.Buildings
@@ -14,8 +15,17 @@ namespace GoldenThrone.Buildings
             _cachedAffectedByFacilities ??= GetComp<CompAffectedByGoldenThroneFacilities>();
         private CompAffectedByGoldenThroneFacilities _cachedAffectedByFacilities;
         
+        
+        public CompRoomRequirement RoomRequirement =>
+            _cachedRequirement ??= GetComp<CompRoomRequirement>();
+        private CompRoomRequirement _cachedRequirement;
+        
+        
         public static int MaxModuleCapacity = 10;
 
+        public bool IsEnabled;
+        
+        
         public int TotalCapacityUsed => ActiveAttachments.Sum(attachment => attachment.CapacityCost);
 
         public List<CompGoldenThroneAttachment> ActiveAttachments => _cachedActiveAttachments ??= GetActiveAttachments().ToList();
@@ -45,6 +55,7 @@ namespace GoldenThrone.Buildings
         {
             base.ExposeData();
             Scribe_Collections.Look(ref _activeAttachmentThingIds, "GWGT_attachedModules");
+            Scribe_Values.Look(ref IsEnabled, "GWGT_isEnabled");
         }
 
         public string ModuleCapacityReport => ActiveAttachments.Any() ? "GWGT.AttachedModules".Translate(TotalCapacityUsed, MaxModuleCapacity) : "GWGT.HasNoModules".Translate();
@@ -62,6 +73,22 @@ namespace GoldenThrone.Buildings
         {
             _cachedAttachments = null;
             _cachedActiveAttachments = null;
+        }
+
+        public override void TickRare()
+        {
+            base.TickRare();
+
+            Room room = this.GetRoom();
+
+            if (room.OutdoorsForWork)
+            {
+                IsEnabled = false;
+            }
+            else
+            {
+                IsEnabled = RoomRequirement.IsSatisfied;
+            }
         }
 
         public void TryRemoveModule(Thing module)
@@ -107,6 +134,13 @@ namespace GoldenThrone.Buildings
             {
                 yield return gizmo;
             }
+        }
+
+        public override string GetInspectString()
+        {
+            StringBuilder builder = new StringBuilder(base.GetInspectString());
+            if (!IsEnabled) builder.AppendLineIfNotEmpty().Append("GWGT.ThroneroomNotAdequate".Translate().Colorize(Color.red));
+            return builder.ToString();
         }
     }
 }

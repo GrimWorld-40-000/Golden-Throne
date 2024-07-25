@@ -102,20 +102,20 @@ namespace GoldenThrone.Attachments
 
         private void AffectGoodwill(Faction faction, bool attackedSomeone, Pawn p = null)
         {
-          if (faction == null || faction.IsPlayer || faction.HostileTo(Faction.OfPlayer) ||
+            if (faction == null || faction.IsPlayer || faction.HostileTo(Faction.OfPlayer) ||
               p is { IsSlaveOfColony: true } || _affectedFactions.TryGetValue(faction, out var pair) &&
               !(!pair.First & attackedSomeone)) return;
-          _affectedFactions[faction] = new Pair<bool, Pawn>(attackedSomeone, p);
+            _affectedFactions[faction] = new Pair<bool, Pawn>(attackedSomeone, p);
         }
 
         private static void GivePsystormThought(Pawn p)
         {
-          p.needs?.mood?.thoughts.memories.TryGainMemory(GWGT_DefsOf.GWGT_PsystormEcho);
+            p.needs?.mood?.thoughts.memories.TryGainMemory(GWGT_DefsOf.GWGT_PsystormEcho);
         }
 
         private static bool CanApplyEffects(Pawn p)
         {
-          return !p.kindDef.isBoss && !p.Dead && !p.Suspended && p.RaceProps.intelligence >= Intelligence.Humanlike;
+            return !p.kindDef.isBoss && !p.Dead && !p.Suspended && p.RaceProps.intelligence >= Intelligence.Humanlike;
         }
 
         private void InjurePawn(float sensitivityDamageBonus, Pawn pawn)

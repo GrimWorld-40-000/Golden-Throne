@@ -14,6 +14,8 @@
         <category>Building</category>
         
         <minifiedDef></minifiedDef>
+        
+        <tickerType>Rare</tickerType>
 
         <hasInteractionCell>true</hasInteractionCell>
         <interactionCellOffset>(0,0,-2)</interactionCellOffset>
@@ -56,6 +58,27 @@
             <GW_ComponentRelic>5</GW_ComponentRelic>
         </costList>
         <comps>
+            <li Class="GoldenThrone.Buildings.CompProperties_RoomRequirement">
+                <throneRoomRequirements>
+                    <li Class="RoomRequirement_ForbiddenBuildings">
+                        <labelKey>RoomRequirementNoBeds</labelKey>
+                        <buildingTags><li>Bed</li></buildingTags>
+                    </li>
+                    <li Class="RoomRequirement_ForbiddenBuildings">
+                        <labelKey>RoomRequirementNoProductionFacilities</labelKey>
+                        <buildingTags><li>Production</li></buildingTags>
+                    </li>
+                    <li Class="RoomRequirement_ForbiddenBuildings" MayRequire="Ludeon.RimWorld.Biotech">
+                      <labelKey>RoomRequirementNoBiotechBuildings</labelKey>
+                      <buildingTags><li>Biotech</li></buildingTags>
+                    </li>
+                    <li Class="RoomRequirement_ForbiddenBuildings" MayRequire="Ludeon.RimWorld.Anomaly">
+                      <labelKey>RoomRequirementNoAnomalyBuildings</labelKey>
+                      <buildingTags><li>Anomaly</li></buildingTags>
+                    </li>
+                </throneRoomRequirements>
+            </li>
+
             <li Class="GoldenThrone.CompProperties_AffectedByGoldenThroneFacilities">
                 <linkableFacilities>
                     <li>GWGT_PsydrainCoffin</li>

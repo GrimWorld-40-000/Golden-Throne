@@ -4,16 +4,19 @@ using Verse;
 
 namespace GoldenThrone.Buildings
 {
-    public class GoldenThroneModuleGizmo : Gizmo
+    public class GoldenThroneModuleGizmo(Building_GoldenThrone throne) : Gizmo
     {
-        protected Building_GoldenThrone Throne;
+        protected Building_GoldenThrone Throne = throne;
 
-        public GoldenThroneModuleGizmo(Building_GoldenThrone throne)
-        {
-            Throne = throne;
-        }
+        private static Color _bg = new Color(0.6215686275f, 0.4882352941f, 0);
+        private static Color _fg = new Color(0.9215686275f, 0.7882352941f, 0.1294117647f);
+        private static Color _disabledBg = new Color(0.7f, 0.2f, 0);
+        private static Color _disabledFg = new Color(1f, 0.3f, 0.1294117647f);
 
-        private float GetTickX(Rect bounds, int index)
+        private Color BackgroundColor => Throne.IsEnabled ? _bg : _disabledBg;
+        private Color ForegroundColor => Throne.IsEnabled ? _fg : _disabledFg;
+
+        private static float GetTickX(Rect bounds, int index)
         {
             return bounds.x + bounds.width / Building_GoldenThrone.MaxModuleCapacity * index;
         }
@@ -49,11 +52,9 @@ namespace GoldenThrone.Buildings
                 rect.y += num;
             }
 
-            float squareWidth = rect.width / Building_GoldenThrone.MaxModuleCapacity;
+            Widgets.DrawRectFast(rect, BackgroundColor);
             
-            Widgets.DrawRectFast(rect, new Color(0.6215686275f, 0.4882352941f, 0));
-            
-            Widgets.DrawRectFast(new Rect(rect.x, rect.y, GetTickX(rect, Throne.TotalCapacityUsed) - rect.x, rect.height), new Color(0.9215686275f, 0.7882352941f, 0.1294117647f));
+            Widgets.DrawRectFast(new Rect(rect.x, rect.y, GetTickX(rect, Throne.TotalCapacityUsed) - rect.x, rect.height), ForegroundColor);
 
             float topY = rect.y + 3;
             float bottomY = rect.y + rect.height;

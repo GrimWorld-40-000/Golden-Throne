@@ -22,18 +22,11 @@ namespace GoldenThrone.Attachments
         
         
         
-        
-        private CompPowerTrader PowerTrader => _compPowerTrader ??= _compPowerTrader = parent.GetComp<CompPowerTrader>();
-        private CompPowerTrader _compPowerTrader;
-        private bool PowerOn => PowerTrader.PowerOn;
-        
-        
-        
         public override void CompTick()
         {
             base.CompTick();
             if (!parent.IsHashIntervalTick(250)) return;
-            if (!PowerOn) return;
+            if (!Active) return;
             if (!IsThroneOccupied(out Pawn user)) return;
             foreach (var need in Props.needsProvidedFor.Select(needDef => user.needs.TryGetNeed(needDef)).Where(need => need != null))
             {

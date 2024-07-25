@@ -19,14 +19,11 @@ namespace GoldenThrone.Attachments
         public CompProperties_AntiAging Props => (CompProperties_AntiAging)props;
         
         
-        private CompPowerTrader PowerTrader => _compPowerTrader ??= _compPowerTrader = parent.GetComp<CompPowerTrader>();
-        private CompPowerTrader _compPowerTrader;
-        private bool PowerOn => PowerTrader.PowerOn;
         
         public override void CompTick()
         {
             base.CompTick();
-            if(!PowerOn) return;
+            if(!Active) return;
             if (parent.IsHashIntervalTick(Props.agingMultiplier)) return;
             if (IsThroneOccupied(out Pawn user))
             {

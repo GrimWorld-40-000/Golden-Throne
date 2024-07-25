@@ -59,6 +59,7 @@
         <Compile Include="Attachments\GoldenThroneAttachment.cs" />
         <Compile Include="Attachments\GoldenThroneAttachmentComp.cs" />
         <Compile Include="Attachments\JobDriver_EnterPsydrainCoffin.cs" />
+        <Compile Include="Buildings\CompRoomRequirement.cs" />
         <Compile Include="Buildings\GoldenThrone.cs" />
         <Compile Include="Buildings\GoldenThroneModuleGizmo.cs" />
         <Compile Include="Buildings\PlaceWorker_GoldenThrone.cs" />
