@@ -48,6 +48,7 @@
         <Reference Include="System.Xml"/>
     </ItemGroup>
     <ItemGroup>
+        <Compile Include="Alert_GoldenThroneUnusable.cs" />
         <Compile Include="ApplyHarmonyPatches.cs" />
         <Compile Include="Attachments\CompAntiAging.cs" />
         <Compile Include="Attachments\CompLifeSupport.cs" />

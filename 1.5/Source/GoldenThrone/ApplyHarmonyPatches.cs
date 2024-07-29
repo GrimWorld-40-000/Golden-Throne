@@ -27,7 +27,7 @@ namespace GoldenThrone
             //Pawns prefer the Golden Throne over everything
             harmony.Patch(
                 AccessTools.Method(typeof(MeditationUtility), nameof(MeditationUtility.AllMeditationSpotCandidates)),
-                prefix: new HarmonyMethod(typeof(ApplyHarmonyPatches), nameof(PostGetMeditationUtility)));
+                prefix: new HarmonyMethod(typeof(ApplyHarmonyPatches), nameof(PreGetMeditationUtility)));
         }
 
         private static void PostFacilityLinkedToGoldenThrone(CompAffectedByFacilities __instance, Thing facility)
@@ -44,19 +44,22 @@ namespace GoldenThrone
                 goldenThrone.OnModuleUnlinked(thing);
             }
         }
-        private static bool PostGetMeditationUtility(ref IEnumerable<LocalTargetInfo> __result, Pawn pawn, bool allowFallbackSpots = true)
+        private static bool PreGetMeditationUtility(ref IEnumerable<LocalTargetInfo> __result, Pawn pawn, bool allowFallbackSpots = true)
         {
             if (TryGetGoldenThroneSpot(pawn, out LocalTargetInfo targetInfo))
             {
                 __result = new[] { targetInfo };
+                return false;
             }
-            return false;
+
+            return true;
         }
 
         private static bool TryGetGoldenThroneSpot(Pawn pawn, out LocalTargetInfo targetInfo)
         {
             foreach (var building in pawn.Map.listerBuildings.AllBuildingsColonistOfDef(GWGT_DefsOf.GWGT_GoldenThrone).Where(building => building.GetComp<CompGoldenThroneOwnership>().AssignedPawns.Contains(pawn)))
             {
+                if (!MeditationUtility.IsValidMeditationBuildingForPawn(building, pawn)) continue;
                 targetInfo = building.InteractionCell;
                 return true;
             }

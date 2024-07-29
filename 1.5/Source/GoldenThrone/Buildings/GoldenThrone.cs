@@ -24,8 +24,10 @@ namespace GoldenThrone.Buildings
         public static int MaxModuleCapacity = 10;
 
         public bool IsEnabled;
-        
-        
+
+        public ThroneDisabledReason ThroneDisabledReason;
+
+
         public int TotalCapacityUsed => ActiveAttachments.Sum(attachment => attachment.CapacityCost);
 
         public List<CompGoldenThroneAttachment> ActiveAttachments => _cachedActiveAttachments ??= GetActiveAttachments().ToList();
@@ -69,12 +71,13 @@ namespace GoldenThrone.Buildings
             return _tmpAttachmentsSet;
         }
 
-        public void ClearAttachmentCache()
+        private void ClearAttachmentCache()
         {
             _cachedAttachments = null;
             _cachedActiveAttachments = null;
         }
 
+        
         public override void TickRare()
         {
             base.TickRare();
@@ -83,11 +86,17 @@ namespace GoldenThrone.Buildings
 
             if (room.OutdoorsForWork)
             {
+                ThroneDisabledReason = ThroneDisabledReason.Outside;
+                IsEnabled = false;
+            }
+            else if (!RoomRequirement.IsSatisfied)
+            {
+                ThroneDisabledReason = ThroneDisabledReason.BadRoom;
                 IsEnabled = false;
             }
             else
             {
-                IsEnabled = RoomRequirement.IsSatisfied;
+                IsEnabled = true;
             }
         }
 
@@ -142,5 +151,12 @@ namespace GoldenThrone.Buildings
             if (!IsEnabled) builder.AppendLineIfNotEmpty().Append("GWGT.ThroneroomNotAdequate".Translate().Colorize(Color.red));
             return builder.ToString();
         }
+    }
+
+    public enum ThroneDisabledReason
+    {
+        NoPower,
+        Outside,
+        BadRoom
     }
 }

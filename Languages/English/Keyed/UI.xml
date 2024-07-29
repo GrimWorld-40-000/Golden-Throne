@@ -29,4 +29,10 @@
 
 	<GWGT.ModuleCannotFunction>Module cannot function due to no power or a nonfunctional Golden Throne.</GWGT.ModuleCannotFunction>
 
+	<GWGT.Alert_ThroneUnusable>Golden Throne unusable</GWGT.Alert_ThroneUnusable>
+	<GWGT.Alert_ThroneUnusableDescription>The Golden Throne is not functioning:\n{0}</GWGT.Alert_ThroneUnusableDescription>
+	<GWGT.Alert_NoPower>Throne is unpowered.</GWGT.Alert_NoPower>
+	<GWGT.Alert_BadRoom>Throne must be housed in a fitting throne room, void of any work stations, altars, or beds.</GWGT.Alert_BadRoom>
+	<GWGT.Alert_Outside>Throne must be housed in a throne room.</GWGT.Alert_Outside>
+
 </LanguageData>

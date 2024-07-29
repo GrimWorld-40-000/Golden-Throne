@@ -1,27 +1,32 @@
 <ModMetaData>
 	<name>Grimworld 40,000 - Golden Throne</name>
-	<author>Clashgore, Abomination, Tittymcswaggy, Samael, Con, Imperator, ThatHitmann</author>
+	<author>Clashgore, blackmarket420, ThatHitmann</author>
 	<packageId>Grimworld.GoldenThrone</packageId>
 	<modIconPath IgnoreIfNoMatchingField="True">UI/Icons/GoldenThroneIcon</modIconPath>
 	<supportedVersions>
-      <li>1.5</li>
+      	<li>1.5</li>
 	</supportedVersions>
 	<modDependencies>
-			<li>
-				<packageId>Grimworld.Framework</packageId>
-				<displayName>Grimworld 40,000 - Framework</displayName>
-				<steamWorkshopUrl>https://steamcommunity.com/sharedfiles/filedetails/?id=3119805903</steamWorkshopUrl>
-			</li>
-			<li>
-				<packageId>Grimworld.Core</packageId>
-				<displayName>Grimworld 40,000 - Core Imperialis</displayName>
-				<steamWorkshopUrl>https://steamcommunity.com/sharedfiles/filedetails/?id=3018671708</steamWorkshopUrl>
-				<downloadUrl>https://github.com/GrimWorld-40-000/Core-Imperialis</downloadUrl>
-			</li>
+		<li>
+			<packageId>Grimworld.Framework</packageId>
+			<displayName>Grimworld 40,000 - Framework</displayName>
+			<steamWorkshopUrl>https://steamcommunity.com/sharedfiles/filedetails/?id=3119805903</steamWorkshopUrl>
+		</li>
+		<li>
+			<packageId>Grimworld.Core</packageId>
+			<displayName>Grimworld 40,000 - Core Imperialis</displayName>
+			<steamWorkshopUrl>https://steamcommunity.com/sharedfiles/filedetails/?id=3018671708</steamWorkshopUrl>
+			<downloadUrl>https://github.com/GrimWorld-40-000/Core-Imperialis</downloadUrl>
+		</li>
+		<li>
+			<packageId>Ludeon.RimWorld.Royalty</packageId>
+			<displayName>Royalty</displayName>
+		</li>
 	</modDependencies>
 	<loadAfter>
 		<li>Grimworld.Framework</li>
 		<li>Grimworld.Core</li>
+		<li>Ludeon.RimWorld.Royalty</li>
 	</loadAfter>
 
 	<description>Big chair make psyker soul go brrrt</description>

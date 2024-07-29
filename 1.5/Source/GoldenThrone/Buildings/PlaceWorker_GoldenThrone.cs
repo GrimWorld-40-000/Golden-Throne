@@ -9,6 +9,5 @@ namespace GoldenThrone.Buildings
         {
             return map.listerBuildings.AllBuildingsColonistOfDef(GWGT_DefsOf.GWGT_GoldenThrone).Any() ? "GWGT.ThroneAlreadyExists".Translate() : base.AllowsPlacing(checkingDef, loc, rot, map, thingToIgnore, thing);
         }
-        
     }
 }
