@@ -3,6 +3,7 @@
 <ResearchProjectDef>
     <defName>GW_GoldenThrone</defName>
     <label>golden throne</label>
+    <tab>GW_GrimTech </tab>
     <description>Construct the golden throne, the ancient Eldar artifact capable of connecting a psyker to their Webway.</description>
     <baseCost>3000</baseCost>
     <techLevel>Spacer</techLevel>
