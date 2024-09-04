@@ -12,7 +12,7 @@ namespace GoldenThrone
     {
         static ApplyHarmonyPatches()
         {
-            Harmony harmony = new Harmony("Grimmworld.GoldenThrone");
+            Harmony harmony = new Harmony("Grimworld.GoldenThrone");
 
             //Calls the special implementation when a thing is linked to the Golden Throne
             harmony.Patch(
@@ -28,6 +28,11 @@ namespace GoldenThrone
             harmony.Patch(
                 AccessTools.Method(typeof(MeditationUtility), nameof(MeditationUtility.AllMeditationSpotCandidates)),
                 prefix: new HarmonyMethod(typeof(ApplyHarmonyPatches), nameof(PreGetMeditationUtility)));
+            
+            //Meditate at spot
+            harmony.Patch(
+                AccessTools.Method(typeof(MeditationUtility), nameof(MeditationUtility.FindMeditationSpot)),
+                postfix: new HarmonyMethod(typeof(ApplyHarmonyPatches), nameof(PostFindMeditationSpot)));
         }
 
         private static void PostFacilityLinkedToGoldenThrone(CompAffectedByFacilities __instance, Thing facility)
@@ -46,21 +51,27 @@ namespace GoldenThrone
         }
         private static bool PreGetMeditationUtility(ref IEnumerable<LocalTargetInfo> __result, Pawn pawn, bool allowFallbackSpots = true)
         {
-            if (TryGetGoldenThroneSpot(pawn, out LocalTargetInfo targetInfo))
-            {
-                __result = new[] { targetInfo };
-                return false;
-            }
+            if (!TryGetGoldenThroneSpot(pawn, out LocalTargetInfo targetInfo)) return true;
+            if (targetInfo == null) return true;
+            __result = new[] { targetInfo };
+            return false;
 
-            return true;
+        }
+
+        private static void PostFindMeditationSpot(ref MeditationSpotAndFocus __result, Pawn pawn)
+        {
+            if (__result.focus.Thing.def != GWGT_DefsOf.GWGT_GoldenThrone) return;
+            __result.spot = __result.focus.Thing.InteractionCell;
         }
 
         private static bool TryGetGoldenThroneSpot(Pawn pawn, out LocalTargetInfo targetInfo)
         {
-            foreach (var building in pawn.Map.listerBuildings.AllBuildingsColonistOfDef(GWGT_DefsOf.GWGT_GoldenThrone).Where(building => building.GetComp<CompGoldenThroneOwnership>().AssignedPawns.Contains(pawn)))
+            
+            
+            foreach (Building building in pawn.Map.listerBuildings.AllBuildingsColonistOfDef(GWGT_DefsOf.GWGT_GoldenThrone).Where(building => building.GetComp<CompGoldenThroneOwnership>().AssignedPawns?.Contains(pawn) ?? false))
             {
                 if (!MeditationUtility.IsValidMeditationBuildingForPawn(building, pawn)) continue;
-                targetInfo = building.InteractionCell;
+                targetInfo = new LocalTargetInfo(building);
                 return true;
             }
 
