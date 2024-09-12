@@ -60,8 +60,8 @@ namespace GoldenThrone
 
         private static void PostFindMeditationSpot(ref MeditationSpotAndFocus __result, Pawn pawn)
         {
-            if (__result.focus.Thing.def != GWGT_DefsOf.GWGT_GoldenThrone) return;
-            __result.spot = __result.focus.Thing.InteractionCell;
+            if (__result.focus.Thing?.def != GWGT_DefsOf.GWGT_GoldenThrone) return;
+            __result.spot = __result.focus.Thing?.InteractionCell ?? __result.focus.Cell;
         }
 
         private static bool TryGetGoldenThroneSpot(Pawn pawn, out LocalTargetInfo targetInfo)
