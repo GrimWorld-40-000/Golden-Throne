@@ -37,6 +37,45 @@
             </li>
         </comps>
     </AbilityDef>
+    
+    <AbilityDef>
+        <defName>GWGT_ThroneFarskipReturn</defName>
+        <label>farskip return</label>
+        <description>Skip everyone from a distant location back to the throne. This costs the caster years off of their life.</description>
+        <iconPath>UI/Abilities/Farskip</iconPath>
+        <targetWorldCell>True</targetWorldCell>
+        <showGizmoOnWorldView>True</showGizmoOnWorldView>
+        <disableGizmoWhileUndrafted>false</disableGizmoWhileUndrafted>
+        <hostile>false</hostile>
+        <category>Skip</category>
+        <warmupSound>PsycastCastLoop</warmupSound>
+        <casterMustBeCapableOfViolence>false</casterMustBeCapableOfViolence>
+        <statBases>
+            <Ability_EffectRadius>19.9</Ability_EffectRadius>
+            <Ability_Duration>0</Ability_Duration>
+        </statBases>
+        <verbProperties>
+            <verbClass>Verb_CastPsycast</verbClass>
+            <targetParams>
+                <canTargetBuildings>False</canTargetBuildings>
+                <canTargetAnimals>False</canTargetAnimals>
+                <thingCategory>Item</thingCategory>
+                <mapObjectTargetsMustBeAutoAttackable>False</mapObjectTargetsMustBeAutoAttackable>
+            </targetParams>
+            <warmupTime>5</warmupTime>
+            <range>19.9</range>
+            <drawAimPie>False</drawAimPie>
+            <requireLineOfSight>False</requireLineOfSight>
+        </verbProperties>
+        <comps>
+            <li Class="GoldenThrone.Attachments.CompProperties_ThroneFarskipReturnAbility">
+                <stunTicks>18~60</stunTicks>
+                <clamorType>Ability</clamorType>
+                <clamorRadius>10</clamorRadius>
+                <ageCostYears>5</ageCostYears>
+            </li>
+        </comps>
+    </AbilityDef>
 
 
     <AbilityDef>
@@ -97,7 +136,7 @@
             </li>
         </comps>
         <confirmationDialogText>The Psystorm will cause destruction to unfold outward, killing all sentient life within a short range, and causing pain to settlements nearby. You will lose goodwill with every non-hostile faction.\n\nDo you really want to trigger the Psystorm?</confirmationDialogText>
-      </AbilityDef>
+    </AbilityDef>
 
 
 </Defs>

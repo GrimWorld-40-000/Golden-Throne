@@ -21,12 +21,16 @@ namespace GoldenThrone.Attachments
 
         public override IEnumerable<Gizmo> GetModuleGizmos()
         {
-            if (!IsThroneOccupied(out Pawn pawn)) yield break;
             if (ThroneDisabled) yield break;
+            if (!IsThroneOccupied(out Pawn pawn)) yield break;
+            
             Command_Ability farskip = new Command_Ability(AbilityUtility.MakeAbility(GWGT_DefsOf.GWGT_ThroneFarskip, pawn), pawn);
             if (!Active) farskip.Disabled = true;
-
             yield return farskip;
+            
+            Command_Ability farskipReturn = new Command_Ability(AbilityUtility.MakeAbility(GWGT_DefsOf.GWGT_ThroneFarskipReturn, pawn), pawn);
+            if (!Active) farskipReturn.Disabled = true;
+            yield return farskipReturn;
         }
     }
 }

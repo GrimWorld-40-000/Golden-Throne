@@ -35,4 +35,7 @@
 	<GWGT.Alert_BadRoom>Throne must be housed in a fitting throne room, void of any work stations, altars, or beds.</GWGT.Alert_BadRoom>
 	<GWGT.Alert_Outside>Throne must be housed in a throne room.</GWGT.Alert_Outside>
 
+	<GWGT.AbilityMustSkipAllies>Need allies to skip.</GWGT.AbilityMustSkipAllies>
+	<GWGT.AbilitySkipAllies>Return all allies to throne.</GWGT.AbilitySkipAllies>
+
 </LanguageData>
