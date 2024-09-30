@@ -7,10 +7,11 @@
         <description>Big chair make psyker soul go brrrt</description>
         <thingClass>GoldenThrone.Buildings.Building_GoldenThrone</thingClass>
         <graphicData>
-            <texPath>Things/Building/Cogitator/GW_Cogitator</texPath>
+            <texPath>Furnitures/GoldenThrone/GoldenThrone</texPath>
             <graphicClass>Graphic_Multi</graphicClass>
-            <drawSize>(14,10)</drawSize>
+            <drawSize>(7,5)</drawSize>
         </graphicData>
+		<defaultPlacingRot>South</defaultPlacingRot>
         <category>Building</category>
         
         <minifiedDef></minifiedDef>
@@ -18,7 +19,7 @@
         <tickerType>Rare</tickerType>
 
         <hasInteractionCell>true</hasInteractionCell>
-        <interactionCellOffset>(0,0,-2)</interactionCellOffset>
+        <interactionCellOffset>(0,0,1)</interactionCellOffset>
         <socialPropernessMatters>true</socialPropernessMatters>
         <pathCost>30</pathCost>
         <building>
@@ -40,7 +41,7 @@
         <researchPrerequisites>
             <li>GW_GoldenThrone</li>
         </researchPrerequisites>
-        <size>(13,9)</size>
+        <size>(5,3)</size>
         <blockWind>true</blockWind>
         <rotatable>true</rotatable>
         <statBases>
