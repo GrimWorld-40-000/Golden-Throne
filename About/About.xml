@@ -2,7 +2,6 @@
 	<name>Grimworld 40,000 - Golden Throne</name>
 	<author>Clashgore, blackmarket420, ThatHitmann</author>
 	<packageId>Grimworld.GoldenThrone</packageId>
-	<modIconPath IgnoreIfNoMatchingField="True">UI/Icons/GoldenThroneIcon</modIconPath>
 	<supportedVersions>
       	<li>1.5</li>
 	</supportedVersions>
